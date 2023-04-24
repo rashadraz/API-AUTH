@@ -49,7 +49,7 @@ function ForgotPassword() {
                                     <div className="bg-green-700 m-2 p-2 rounded text-white" >{status}</div>
                                 )}
                                 <div className="mb-10 text-center md:mb-16">
-                                Forgot your password? Let us know your email address and we will
+                                    Forgot your password? Let us know your email address and we will
                 email you a password reset link.
                                 </div>
                                 <form onSubmit={handleSubmit}>

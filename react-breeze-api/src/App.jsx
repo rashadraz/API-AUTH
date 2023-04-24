@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
-
+import ResetPassword from "./pages/ResetPassword";
 import AuthLayout from "./layouts/AuthLayout";
 import GuestLayout from "./layouts/GuestLayout";
 
@@ -18,7 +18,13 @@ function App() {
                     <Route element={<GuestLayout />}>
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/forgot-password" element={<ForgotPassword />}
+                        <Route
+                            path="/forgot-password"
+                            element={<ForgotPassword />}
+                        />
+                        <Route
+                            path="/password-reset/:token"
+                            element={<ResetPassword />}
                         />
                     </Route>
                 </Routes>
