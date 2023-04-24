@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         await csrf();
         setErrors([]);
         try {
-            await axios.post("/login", data );
+            await axios.post("/login", data);
             await getUser();
             navigate("/");
         } catch (e) {
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
         await csrf();
         setErrors([]);
         try {
-            await axios.post("/register", data );
+            await axios.post("/register", data);
             await getUser();
             navigate("/");
         } catch (e) {
@@ -45,14 +45,19 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const logout = () => {
+        axios.post("/logout").then(() => {
+            setUser(null);
+        });
+    };
+
     return (
         <AuthContext.Provider
-            value={{ user, errors, getUser, login, register }}
+            value={{ user, errors, getUser, login, register , logout }}
         >
             {children}
         </AuthContext.Provider>
     );
-
 };
 export default function useAuthContext() {
     return useContext(AuthContext);

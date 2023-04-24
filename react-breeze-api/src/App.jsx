@@ -2,8 +2,10 @@ import { Link, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import useAuthContext from "./context/AuthContext";
 
 function App() {
+    const { user, logout } = useAuthContext();
     return (
         <>
             <div className="bg-slate-100 min-h-screen">
@@ -38,24 +40,37 @@ function App() {
                                         Home
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link
-                                        to="/login"
-                                        className="block rounded py-2 pr-4 pl-3 text-white"
-                                        aria-current="page"
-                                    >
-                                        Login
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        to="/register"
-                                        className="block rounded py-2 pr-4 pl-3 text-white"
-                                        aria-current="page"
-                                    >
-                                        Register
-                                    </Link>
-                                </li>
+                                {user ? (
+                                    <>
+                                        <li>
+                                            <button onClick={logout} className="block rounded py-2 pr-4 pl-3 text-white">
+                                                Logout
+                                            </button>
+                                        </li>
+                                    </>
+                                ) : (
+                                    <>
+                                        {" "}
+                                        <li>
+                                            <Link
+                                                to="/login"
+                                                className="block rounded py-2 pr-4 pl-3 text-white"
+                                                aria-current="page"
+                                            >
+                                                Login
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                to="/register"
+                                                className="block rounded py-2 pr-4 pl-3 text-white"
+                                                aria-current="page"
+                                            >
+                                                Register
+                                            </Link>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
                         </div>
                     </div>
